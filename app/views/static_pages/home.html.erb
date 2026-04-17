@@ -1,0 +1,21 @@
+<h1>Pexels Collection Viewer</h1>
+
+<%= form_with url: root_path, method: :get, local: true do |f| %>
+  <%= f.label :collection_id, "Enter the Collection ID:" %>
+  <%= f.text_field :collection_id %>
+  <%= f.submit "SHow images" %>
+<% end %>
+
+<hr>
+
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
+
+<% if @photos %>
+  <% @photos.each do |item| %>
+    <div style="margin-bottom:20px;">
+      <img src="<%= item["src"]["medium"] %>">
+    </div>
+  <% end %>
+<% end %>
